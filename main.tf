@@ -16,7 +16,14 @@ resource "azurerm_resource_group" "pwc-test" {
 
 }
 
- 
+ resource "azurerm_managed_disk" "test" {
+  name                 = "managed-disk123"
+  location             = "eastus"
+  resource_group_name  = "pwc-test"
+  storage_account_type = "Standard_LRS"
+  create_option        = "Empty"
+  disk_size_gb         = "10"
+}
 
 resource "azurerm_snapshot" "pwc-test" {
 
